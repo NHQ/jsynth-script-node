@@ -13,7 +13,7 @@
 	*synth* is not actually global, just a closure up/out/around. When you compile/run your code, 
 	it's run in its own closure. This has consequences of its own, for loops or w/e. 
 	But you can handle it. You can write to the true global, window, if you want.
-	Who will care if you do? It's a safe place to store things for a sesh. vars apply.
+	Who will care if you do? It's a safe place to store things for a sesh.
 	
 	>>TO COMPILE YOUR CODE<< you have options:
 	'SHIFT-ENTER' == compile everything in the editor || selected text only.
