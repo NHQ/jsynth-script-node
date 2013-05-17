@@ -6,9 +6,9 @@
 .cm-s-mistakes .cm-variable {color: #111;}
 .cm-s-mistakes .cm-variable-2 {color: #00f;}
 .cm-s-mistakes .cm-variable-3 {color: #00f;}
-.cm-s-mistakes .cm-property {color: #111;}
+.cm-s-mistakes .cm-property {color: rgab(33, 133, 66, 1 );}
 .cm-s-mistakes .cm-operator {color: #111;}
-.cm-s-mistakes .cm-comment {color: darkgreen;}
+.cm-s-mistakes .cm-comment {color: rgab(33, 133, 66, .667 ); font-style:italic}
 .cm-s-mistakes .cm-string {color: rgba(9,176,8,1);}
 .cm-s-mistakes .cm-string-2 {color: rgba(9,176,8,.75);}
 .cm-s-mistakes .cm-meta {color: #555;}

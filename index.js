@@ -17,12 +17,14 @@ var css = s1 + s2 + s3;
 		var sample = 0;
 		var sampleIndex = 0;
 		var global = {};
-
+		var sampleRate = 0;
 		var oscillators = require('oscillators')();
-		var jdelay = require('jdelay');
+		var delay = require('jdelay');
 		var amod = require('amod');
 
 	  module.exports = function(master){
+		
+					sampleRate = master.sampleRate
 		
 					var emitter = new Emitter()
 
@@ -58,7 +60,7 @@ var css = s1 + s2 + s3;
 						return synth() || 0;
 					});
 
-					return {element: box, style: style, source: source}
+					return {editor: ed, element: box, style: style, source: source}
 					
 					function synth (){return 0};
 					
