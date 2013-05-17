@@ -112,6 +112,6 @@ function shaker (t) {
     return r * r;
     
     function sine (x) {
-        return oscillators.sine(time, x);
+        return oscillators.sine(t, x);
     }
 }
