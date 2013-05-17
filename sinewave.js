@@ -1,18 +1,18 @@
 /* ** Welcome to the secret.synth.fm pre alpa beta mic check party ***
+		
+	This is a live scripting environment for web audio. This is one of many synthesizers 
+	and music playing apparatus coming from secret.synth.fm this summer.
 	
-	*** IMPORTANTE: THIS IS THE USER MANUAL ***
-	
-	This is a live scripting environment for web audio. This is just one of many synthesizers 
-	and music playing apparatus coming to secret.synth.fm!
+	TO PLAY: Write DSP Code in this editor. See the Example following these comments. 
+	Press SHIFT-ENTER right now to hear it play while you read on...
 	
 	There is a "psuedo global" variable *synth* [Function] which gets called every sample. 
-	You will want to define that I.E. synth = myDspFunction; See the Example following these comments. 
-	Press SHIFT-ENTER right now to hear it play while you read...
+	You will want to define that I.E. synth = myDspFunction; 
 	
 	*synth* is not actually global, just a closure up/out/around. When you compile/run your code, 
 	it's run in its own closure. This has consequences of its own, for loops or w/e. 
-	But you can handle it. You can write other variables the true global, window, if you want.
-	Who will care if you do? It's a safe place to store things for a sesh.
+	But you can handle it. You can write other variables to the true global, window, if you want.
+	Who will care if you do? It's a safe place to store things for a sesh. vars apply.
 	
 	>>TO COMPILE YOUR CODE<< you have options:
 	'SHIFT-ENTER' == compile everything in the editor || selected text only.
