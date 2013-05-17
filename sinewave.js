@@ -1,8 +1,8 @@
 /* ** Welcome to the secret.synth.fm pre alpa beta mic check party ***
 	"use chrome"
 		
-	This is a live scripting environment for web audio. This is one of many synthesizers 
-	and music playing apparatus coming from secret.synth.fm this summer.
+	This is a live scripting environment for web audio. This is one of several secret synthesizers 
+	and music playing apparaTi will be hosted at this your current hostname.
 	
 	TO PLAY: Write DSP Code in this editor. See the Example following these comments. 
 	Press SHIFT-ENTER right now to hear it play while you read on...
