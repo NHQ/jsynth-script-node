@@ -11,7 +11,7 @@
 	
 	*synth* is not actually global, just a closure up/out/around. When you compile/run your code, 
 	it's run in its own closure. This has consequences of its own, for loops or w/e. 
-	But you can handle it. You can write other variables to the true global, window, if you want.
+	But you can handle it. You can write to the true global, window, if you want.
 	Who will care if you do? It's a safe place to store things for a sesh. vars apply.
 	
 	>>TO COMPILE YOUR CODE<< you have options:
@@ -19,11 +19,11 @@
 	'ALT-ENTER' === same as above.
 	'CMD-ENTER' === compile the current line only.
 	
-	There are some other pseudo globals you can use.
+	There are some other pseudo globals you may need to refer to.
 	The most important is *time*, in the lowercase. 
-	*time* is updated every call to synth(). You know what to do with that.
+	*time* [Float] is updated every call to synth(). You know what to do with that.
 	
-	The others are: *sampleRate*, *oscillators*, *amod*, *delay*, *sample*
+	The other globals: *sampleRate*, *oscillators*, *amod*, *delay*, *sample*
 	
 	*sampleRate* the master sampleRate, in samples per second
 
