@@ -24,23 +24,26 @@
 	The most important is *time*, in the lowercase. 
 	*time* [Float] is updated every call to synth(). You know what to do with that.
 	
-	The other globals: *sampleRate*, *oscillators*, *amod*, *delay*, *sample*, *tau*
+	The other globals: *sampleRate*, *amod*, *delay*, *sample*, *tau*, and several oscillators.
 	
 	*sampleRate* the master sampleRate, in samples per second
 
-	*oscillators* [object] // a group of time-domain oscillator functions
-		.sine(time, frequency)
-		.square(ibid.)
-		.saw(ibid.)
-		.saw_i(ibid.) // inverted saw
-		.triangle(ibid.)
+	#oscillators A group of time-domain oscillator functions. They each take two params
+	@time and @frequency. eg: var sample = square(time, 400)
+	
+	*sine* 
+	*square*
+	*saw*
+	*saw_i*
+	*triangle*
 
 	*amod* [Function] // amplitude modulation, takes 4 params
 		@ base // or center, eg: .5
 		@	radius // how far from the center to modulate, eg: .1
 		@ *time* // the aforementioned time psuedo-global
 		@ frequency // how often in Hz you want to go from eg: .4 to .6 (.5+-.1)
-
+		  returns [float] values between base +/- radius
+		
 	*delay* [Function] // a delay function constructor, takes 3 params
 		@ delayLength [integer] // in SAMPLES eg: 1 second delay = sampleRate
 		@ feedback [float] // the feedback level 0-1 normalized, but you can pass any value... 

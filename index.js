@@ -69,11 +69,6 @@ var css = s1 + s2 + s3;
 					return {editor: ed, element: box, style: style, source: source}
 					
 					function synth (){return 0};
-					
-					function runCode(code){
-						var fn = Function(code);
-						synth = fn;
-					}
 
 					function keyMapLine(e){
 						var lineNo = ed.editor.getCursor().line;
