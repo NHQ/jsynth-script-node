@@ -24,7 +24,7 @@
 	The most important is *time*, in the lowercase. 
 	*time* [Float] is updated every call to synth(). You know what to do with that.
 	
-	The other globals: *sampleRate*, *oscillators*, *amod*, *delay*, *sample*
+	The other globals: *sampleRate*, *oscillators*, *amod*, *delay*, *sample*, *tau*
 	
 	*sampleRate* the master sampleRate, in samples per second
 
@@ -52,11 +52,12 @@
 			
 	*sample* [float] // an input value from audio input streams from other sources, coming soon ;^)
 	
+	*tau* [float] // Chinese 4 the Math.PI * 2
+	
 */
 
 // this sample forked and modded from https://github.com/substack/nodepdx-beep-boop-examples/tree/master/example
 // press SHIFT+ENTER to compile!
-var tau = Math.PI * 2;
 var Delay = delay(sampleRate * 4, .887, .223) // a 4 second delay?
 
 synth = function () { // define the global synth function
@@ -70,11 +71,11 @@ synth = function () { // define the global synth function
     var t = tt % 8;
     
     var honk = (tt % 32 >= 15.5 && tt % 32 < 16.5) * (
-        2 * sine(254)
-        + 5 * sine(4) * sine(508)
-        + 1 * sine(250)
-        + 0.5 * sine(125)
-    ) * (sine(3) + sine(5) + sine(0.5)) / 3;
+        2 * sine(t, 254)
+        + 5 * sine(t, 4) * sine(t, 508)
+        + 1 * sine(t, 250)
+        + 0.5 * sine(t, 125)
+    ) * (sine(t, 3) + sine(t, 5) + sine(t, 0.5)) / 3;
     
     var n = t % 7;
     var xs = [ 303, 1212, 666];
@@ -86,8 +87,8 @@ synth = function () { // define the global synth function
     var f = x + Math.sin(z * (t % 1));
     
   	var sample = (
-         0.15 * sine(tau * t * f) * (time % 32 > 8 ? 1 : 0)
-        + 0.1 * sine(tau * t * (f * 2 + 4)) * (time % 32 > 16 ? 1 : 0)
+         0.15 * sine(tau * t * f, 1) * (time % 32 > 8 ? 1 : 0)
+        + 0.1 * sine(tau * t * (f * 2 + 4), 1) * (time % 32 > 16 ? 1 : 0)
         + 0.4 * (tt >= 3) * shaker(tt < 16 ? tt : (tt % 4 + 16))
         + honk
     );
@@ -98,10 +99,6 @@ synth = function () { // define the global synth function
  	  sample = Delay(sample)
     
     return sample
-    
-    function sine (x) {
-        return oscillators.sine(t, x);
-    }
 };
 
 function shaker (t) {
@@ -109,10 +106,7 @@ function shaker (t) {
     var xs = [ 20, 10, 32, 50, 30 ];
     var x = xs[Math.floor(t*8)%xs.length];
     var f = x + Math.sin(1000 * (n % 1));
-    var r = sine(f) * (sine(4) + sine(3) + sine(5)) * sine(4);
+    var r = sine(t, f) * (sine(t, 4) + sine(t, 3) + sine(t, 5)) * sine(t, 4);
     return r * r;
-    
-    function sine (x) {
-        return oscillators.sine(t, x);
-    }
+
 }

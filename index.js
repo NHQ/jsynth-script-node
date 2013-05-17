@@ -19,8 +19,14 @@ var css = s1 + s2 + s3;
 		var global = {};
 		var sampleRate = 0;
 		var oscillators = require('oscillators')();
+		var sine = oscillators.sine;
+		var saw = oscillators.saw;
+		var saw_i = oscillators.saw_i;
+		var square = oscillators.square;
+		var triangle = oscillators.triangle;
 		var delay = require('jdelay');
 		var amod = require('amod');
+		var tau = Math.PI * 2;
 
 	  module.exports = function(master){
 		
