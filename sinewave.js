@@ -4,8 +4,8 @@
 	
 	This is a live scripting environment for web audio.
 	
-	There is a "global" variable *synth* [Function] which gets polled for every sample. 
-	I.E. synth = myDspFunction; See the Example following these comments. 
+	There is a "psuedo global" variable *synth* [Function] which gets called every sample. 
+	You will want to I.E. synth = myDspFunction; See the Example following these comments. 
 	Press SHIFT-ENTER right now to hear it play while you read...
 	
 	*synth* is not actually global, just a closure up/out/around. When you compile/run your code, 
