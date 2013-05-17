@@ -2,7 +2,8 @@
 	
 	*** IMPORTANTE: THIS IS THE USER MANUAL ***
 	
-	This is a live scripting environment for web audio.
+	This is a live scripting environment for web audio. This is just one of many synthesizers 
+	and music playing apparatus coming to secret.synth.fm!
 	
 	There is a "psuedo global" variable *synth* [Function] which gets called every sample. 
 	You will want to I.E. synth = myDspFunction; See the Example following these comments. 
