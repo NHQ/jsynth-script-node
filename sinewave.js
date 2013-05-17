@@ -69,11 +69,11 @@ synth = function () { // define the global synth function
     var t = tt % 8;
     
     var honk = (tt % 32 >= 15.5 && tt % 32 < 16.5) * (
-        2 * sin(254)
-        + 5 * sin(4) * sin(508)
-        + 1 * sin(250)
-        + 0.5 * sin(125)
-    ) * (sin(3) + sin(5) + sin(0.5)) / 3;
+        2 * sine(254)
+        + 5 * sine(4) * sine(508)
+        + 1 * sine(250)
+        + 0.5 * sine(125)
+    ) * (sine(3) + sine(5) + sine(0.5)) / 3;
     
     var n = t % 7;
     var xs = [ 303, 1212, 666];
@@ -85,8 +85,8 @@ synth = function () { // define the global synth function
     var f = x + Math.sin(z * (t % 1));
     
   	var sample = (
-         0.15 * Math.sin(tau * t * f) * (time % 32 > 8 ? 1 : 0)
-        + 0.1 * Math.sin(tau * t * (f * 2 + 4)) * (time % 32 > 16 ? 1 : 0)
+         0.15 * sine(tau * t * f) * (time % 32 > 8 ? 1 : 0)
+        + 0.1 * sine(tau * t * (f * 2 + 4)) * (time % 32 > 16 ? 1 : 0)
         + 0.4 * (tt >= 3) * shaker(tt < 16 ? tt : (tt % 4 + 16))
         + honk
     );
@@ -98,8 +98,8 @@ synth = function () { // define the global synth function
     
     return sample
     
-    function sin (x) {
-        return Math.sin(tau * t * x);
+    function sine (x) {
+        return oscillators.sine(time, x);
     }
 };
 
@@ -108,10 +108,10 @@ function shaker (t) {
     var xs = [ 20, 10, 32, 50, 30 ];
     var x = xs[Math.floor(t*8)%xs.length];
     var f = x + Math.sin(1000 * (n % 1));
-    var r = sin(f) * (sin(4) + sin(3) + sin(5)) * sin(4);
+    var r = sine(f) * (sine(4) + sine(3) + sine(5)) * sine(4);
     return r * r;
     
-    function sin (x) {
-        return Math.sin(tau * t * x);
+    function sine (x) {
+        return oscillators.sine(time, x);
     }
 }
