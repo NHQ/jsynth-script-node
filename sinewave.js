@@ -6,7 +6,7 @@
 	and music playing apparatus coming to secret.synth.fm!
 	
 	There is a "psuedo global" variable *synth* [Function] which gets called every sample. 
-	You will want to I.E. synth = myDspFunction; See the Example following these comments. 
+	You will want to define that I.E. synth = myDspFunction; See the Example following these comments. 
 	Press SHIFT-ENTER right now to hear it play while you read...
 	
 	*synth* is not actually global, just a closure up/out/around. When you compile/run your code, 
