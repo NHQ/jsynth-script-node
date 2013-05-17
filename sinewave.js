@@ -99,7 +99,7 @@ synth = function () { // define the global synth function
     return sample
     
     function sine (x) {
-        return oscillators.sine(time, x);
+        return oscillators.sine(t, x);
     }
 };
 
