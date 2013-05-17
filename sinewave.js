@@ -1,4 +1,5 @@
 /* ** Welcome to the secret.synth.fm pre alpa beta mic check party ***
+	"use chrome"
 		
 	This is a live scripting environment for web audio. This is one of many synthesizers 
 	and music playing apparatus coming from secret.synth.fm this summer.
