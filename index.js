@@ -51,7 +51,7 @@ var css = s1 + s2 + s3;
 					div2.classList.add('right');
 					box.appendChild(div2);
 
-					var ed = Editor({ container: box, value: js, updateInterval: Infinity})
+					var ed = Editor({ container: box, value: js, updateInterval: Infinity, viewportMargin: Infinity})
 
 					ed.editor.addKeyMap({'Shift-Enter': keyMap, 'Alt-Enter':keyMap, 'Cmd-Enter': keyMapLine})
 					
