@@ -2,14 +2,18 @@ var Editor = require('./javascript-editor');
 var Emitter = require('events').EventEmitter
 var jsynth = require('jsynth');
 var fs = require('fs');
+var html = require('hyperscript');
+var touchdown = require('touchdown');
 
 var s1 = fs.readFileSync('./styles/codemirror.css');
 var s3 = fs.readFileSync('./styles/style.css');
 var s2 = fs.readFileSync('./styles/theme.css');
-var js = fs.readFileSync('./sinewave.js');
+var s4 = fs.readFileSync('../css/scriptNode.sidebar.css');
+var s5 = fs.readFileSync('../css/popup.css');
 
-var val = fs.readFileSync('./entry.js');
-var css = s1 + s2 + s3;	
+var css = s1 + s2 + s3 + s4 + s5;	
+
+var js = fs.readFileSync('./sinewave.js');
 
 (function(window, document){
 
@@ -37,7 +41,111 @@ var css = s1 + s2 + s3;
 					var style = document.createElement('style');
 					style.textContent = css;
 					document.head.appendChild(style)
+					
+					var label1 = html('legend', 'SHIFT-ENTER', 
+						html('label', {for: 'compileButton'}, 
+							touchdown.start(html('button', {
+								textContent: 'compile code',
+								name: 'compileButton',
+								id: 'compileButton',
+								ontouchdown: keyMap,
+								}
+							))
+						)
+					)
+					
+					var label2 = html('legend', 'ctrl-s', 
+						html('label', {for: 'shareButton'}, 
+							touchdown.start(html('button', {
+								textContent: 'share',
+								name: 'shareButton',
+								id: 'shareButton',
+								ontouchdown: null,
+								}
+							))
+						)
+					)
+					
+					var label3 = html('legend', 'ctrl-g', 
+						html('label', {for: 'commitButton'}, 
+							touchdown.start(html('button', {
+								textContent: 'git commit',
+								name: 'commitButton',
+								id: 'commitButton'
+								}
+							))
+						)
+					)
+					
+					var label4 = html('legend', 'ctrl-h', 
+						html('label', {for: 'helpButton'}, 
+							touchdown.start(html('button', {
+								textContent: 'help & info',
+								name: 'helpButton',
+								id: 'helpButton'
+								}
+							))
+						)
+					)
+					
+					var label5 = html('legend', 'ctrl-m', 
+						html('label', {for: 'menuButton'}, 
+							touchdown.start(html('button', {
+								textContent: 'hide toolbar',
+								name: 'menuButton',
+								id: 'menuButton'
+								}
+							))
+						)
+					)
+					
+					var label6 = html('legend', 'ctrl-z', 
+						html('label', {for: 'zeroButton'}, 
+							touchdown.start(html('button', {
+								textContent: 'return zero',
+								name: 'zeroButton',
+								id: 'zeroButton',
+								ontouchdown: function(){synth = function(){return 0}}
+								}
+							))
+						)
+					)
+					
+					var label7 = html('legend', 'ctrl-o', 
+						html('label', {for: 'openButton'}, 
+							touchdown.start(html('button', {
+								textContent: 'open file',
+								name: 'openButton',
+								id: 'openButton'
+								}
+							))
+						)
+					)
+					
+					var label8 = html('legend', 'ctrl-f', 
+						html('label', {for: 'fullScreenButton'}, 
+							touchdown.start(html('button', {
+								textContent: 'full screen',
+								name: 'fullScreenButton',
+								id: 'fullScreenButton',
+								ontouchdown: function(){document.body.webkitRequestFullscreen()}
+								}
+							))
+						)
+					)
+					
+					var sidebar = html('div.skinnyBar', 
+						html('h1',{
+							innerHTML: '<i>the</i><br />PROTOTYPER'
+						}
+						)
+					)
+					
+					var scriptMenu = html('div.scriptMenu', [label1, label2, label3, label4, label5, label6, label7, label8]);
 
+					sidebar.appendChild(scriptMenu)					
+					document.body.appendChild(sidebar)
+					
 					var box = document.createElement('div');
 					box.classList.add('editorBox');
 				  document.body.appendChild(box);
@@ -69,6 +177,11 @@ var css = s1 + s2 + s3;
 					return {editor: ed, element: box, style: style, source: source}
 					
 					function synth (){return 0};
+					
+					function ctrl_s(){}
+					function ctrl_c(){}
+					function ctrl_h(){}
+					function ctrl_g(){}
 
 					function keyMapLine(e){
 						var lineNo = ed.editor.getCursor().line;

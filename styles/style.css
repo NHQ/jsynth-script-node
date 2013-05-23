@@ -1,10 +1,15 @@
 body { 
+	width:100%;
+	height:100%;
 	margin: 0; 
 	padding: 0;
-	background-image: radial-gradient(22% 50%, rgba(248,249,243,0.75), rgba(93,93,93,0.60));
+	background-image: radial-gradient(50% 50%, rgba(248,249,243,1), rgba(93,93,93,0.60));
 }
 
-html, body, #editor { height: 100%; }
+html, body, #editor { 
+	width:100%;
+	height:100%;
+}
 
 /* mysterious pre */
 body > pre { display: none } 
@@ -26,16 +31,17 @@ body > pre { display: none }
 
 
 .editorBox{
-	width:91%;
+	width:90%;
 	height:100%;
 	margin:0;
-	overflow-y:hidden
+	overflow-y:hidden;
+	box-sizing:border-box;
 }
 
 .editor{
 	width:100%;
 	float:left;
-	background:rgba(240,240,240,.85);
+	background:rgba(245,245,245,.75);
 	overflow-y:hidden
 }
 
