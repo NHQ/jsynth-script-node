@@ -4,16 +4,25 @@ var jsynth = require('jsynth');
 var fs = require('fs');
 var html = require('hyperscript');
 var touchdown = require('touchdown');
+var diff = window.diff = require('diff');
+var store = window.store = require('store');
+var diffs = [];
+var txt = fs.readFileSync('./sinewave.js');
+var lastCompile = txt + '';
+var firstDifObject = {
+	diff: diff.createPatch('http://secret.synth.fm', '', lastCompile),
+	time: new Date().getTime()
+}
 
-var s1 = fs.readFileSync('./styles/codemirror.css');
-var s3 = fs.readFileSync('./styles/style.css');
-var s2 = fs.readFileSync('./styles/theme.css');
-var s4 = fs.readFileSync('../css/scriptNode.sidebar.css');
+diffs.push(firstDifObject)
+
+var s1 = fs.readFileSync('../css/script-node/codemirror.css');
+var s3 = fs.readFileSync('../css/script-node/style.css');
+var s2 = fs.readFileSync('../css/script-node/theme.css');
+var s4 = fs.readFileSync('../css/script-node/sidebar.css');
 var s5 = fs.readFileSync('../css/popup.css');
 
 var css = s1 + s2 + s3 + s4 + s5;	
-
-var js = fs.readFileSync('./sinewave.js');
 
 (function(window, document){
 
@@ -37,6 +46,8 @@ var js = fs.readFileSync('./sinewave.js');
 					sampleRate = master.sampleRate
 		
 					var emitter = new Emitter()
+					
+					window.getDiffs = getDiffByIndex;
 
 					var style = document.createElement('style');
 					style.textContent = css;
@@ -159,10 +170,10 @@ var js = fs.readFileSync('./sinewave.js');
 					div2.classList.add('right');
 					box.appendChild(div2);
 
-					var ed = Editor({ container: box, value: js, updateInterval: Infinity, viewportMargin: Infinity})
+					var ed = Editor({ container: box, value: txt, updateInterval: Infinity, viewportMargin: Infinity})
 
 					ed.editor.addKeyMap({'Shift-Enter': keyMap, 'Alt-Enter':keyMap, 'Cmd-Enter': keyMapLine})
-					
+										
 					emitter.on('update', function(fn){
 						fn();
 					})
@@ -200,8 +211,20 @@ var js = fs.readFileSync('./sinewave.js');
 						else val = ed.editor.getValue()
 						var ready = ed.update(val)
 						if(!(ready === false)){
-							eval(val)
+							eval(val);
+							var d = diff.createPatch('http://secret.synth.fm', lastCompile, val);
+							lastCompile = val;
+							diffs.push({time: new Date().getTime(), diff: d})
+							store.set('diffs', diffs);
 						}
+					}
+					
+					function getDiffByIndex(index){
+						var str = '';
+						for(var x = 0; x < index; x++) {
+						  str =	diff.applyPatch(str, diffs[x].diff)
+						}
+						return str
 					}
   	}
 
