@@ -1,4 +1,4 @@
-var Editor = require('./javascript-editor');
+var Editor = require('javascript-editor');
 var Emitter = require('events').EventEmitter
 var jsynth = require('jsynth');
 var fs = require('fs');
