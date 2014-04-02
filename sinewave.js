@@ -1,3 +1,5 @@
 synth = function(){
-	return oscillators.sine(time, 303)
+	return sine(time, 303)
 }
+
+return synth

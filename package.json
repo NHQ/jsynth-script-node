@@ -10,13 +10,17 @@
     "type": "git",
     "url": "git://github.com/NHQ/jsynth-script-node.git"
   },
-  "dependencies" : {
-    "jsynth" : "",
-    "hyperscript" : "",
-    "store" : "",
-    "diff" : "",
-    "touchdown" : "",
-    "javascript-editor" : "https://github.com/NHQ/javascript-editor/tarball/master"
+  "dependencies": {
+    "jsynth": "",
+    "hyperscript": "",
+    "store": "",
+    "diff": "",
+    "touchdown": "",
+    "javascript-editor": "https://github.com/NHQ/javascript-editor/tarball/master",
+    "amod": "^2.0.0",
+    "jdelay": "^9.0.0",
+    "oscillators": "^1.0.0",
+    "iframarfi": "^0.3.0"
   },
   "author": "johnnyscript.us and friends",
   "license": "KITTEN",
