@@ -31,7 +31,11 @@ var css = s1 + s2 + s3 + s4;
 		
 					var emitter = new Emitter()
 					
-					window.getDiffs = getDiffByIndex;
+          window.addEventListener('message', function(evt){
+            //console.log(evt.data)
+          }, true)
+					
+          window.getDiffs = getDiffByIndex;
 
 					var style = document.createElement('style');
 					style.textContent = css;

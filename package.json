@@ -20,7 +20,11 @@
     "amod": "^2.0.0",
     "jdelay": "^9.0.0",
     "oscillators": "^1.0.0",
-    "iframarfi": "^0.3.0"
+    "iframarfi": "^0.3.0",
+    "jmod": "^0.4.0",
+    "teoria": "^0.5.0",
+    "nvelope": "^0.11.0",
+    "jsynth-sync": "^0.8.0"
   },
   "author": "johnnyscript.us and friends",
   "license": "KITTEN",
