@@ -6,7 +6,7 @@ module.exports = function(){
   var emit = new emitter
   jsynth = require('jsynth')
   osc = require('oscillators')
-  amod = require('amod')
+  //amod = require('amod')
   delay = require('jdelay')
   teoria = require('teoria')
   nvelope = require('nvelope')
@@ -43,9 +43,13 @@ module.exports = function(){
   
   window.addEventListener('message', function(evt){
     try{
-      var fn = Function(evt.data)()
-      if(isNaN(fn(Math.random()))) throw new Error('returned NaN')
-      else music = fn
+      try{
+        var fn = Function(evt.data)()
+      }catch(err){console.log(err)}
+      try{  
+        if(isNaN(fn(Math.random()))) throw new Error('returned NaN')
+        else music = fn
+      }catch(err){console.log(err)}
     }
     catch(err){console.log(err)}
   })
