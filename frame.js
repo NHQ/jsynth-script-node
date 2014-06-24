@@ -1,5 +1,6 @@
 module.exports = function(){
-  
+  var eat = require('../../es666')
+  var xxx = require('jmao')
   time = 0;
   sammple = 0;
   var emitter = require('events').EventEmitter
@@ -42,18 +43,10 @@ module.exports = function(){
   synth.connect(master.destination)
   
   window.addEventListener('message', function(evt){
-    try{
-      try{
-        var fn = Function(evt.data)()
-      }catch(err){console.log(err)}
-      try{  
-        if(isNaN(fn(Math.random()))) throw new Error('returned NaN')
-        else music = fn
-      }catch(err){console.log(err)}
-    }
-    catch(err){console.log(err)}
+    eat(evt.data, function(e,f){
+      music = f
+    }) // Function(evt.data)()
   })
-
 }
 
 
