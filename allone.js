@@ -1,4 +1,4 @@
-var eat = require('../../es666')
+var eat = require('es666')
 var Editor = require('javascript-editor');
 var Emitter = require('events').EventEmitter
 var fs = require('fs');
@@ -28,7 +28,7 @@ var css = s1 + s2 + s3 + s4;
 
 (function(window, document){
 
-	  module.exports = function(master){
+	  module.exports = function(){
 		
 					var emitter = new Emitter()
 					

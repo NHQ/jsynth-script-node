@@ -1,5 +1,4 @@
-var master = window.master = new webkitAudioContext()
-var editor = require('./allone')(master);
+var editor = require('./allone')();
 
 editor.editor.editor.scrollTo(0,0) 
 // lol
