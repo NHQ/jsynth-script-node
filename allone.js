@@ -106,7 +106,7 @@ var css = s1 + s2 + s3 + s4;
               var d = diff.createPatch('http://secret.synth.fm', lastCompile, val);
 							lastCompile = val;
               diffs.push({time: new Date().getTime(), diff: d})
-							currentDiff = diffs.length - 1
+							//currentDiff = diffs.length - 1
 							store.set(startTime + '_diffs', diffs);
 						}
 					}
