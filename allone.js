@@ -122,7 +122,7 @@ var css = s1 + s2 + s3 + s4;
           function eatcode(txt){
             if(txt) codes.push(txt)
             if(codes.length){
-              eat(codes.shift(), function(e, r){
+              eat(codes.shift(), 'https://wzrd.in/multi', function(e, r){
                 if(e) console.log(e) 
                 eatcode()
               })
