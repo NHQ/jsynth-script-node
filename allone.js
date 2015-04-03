@@ -1,4 +1,4 @@
-var eat = require('../../es666')
+var eat = require('es666')
 var Editor = require('javascript-editor');
 var Emitter = require('events').EventEmitter
 var fs = require('fs');
